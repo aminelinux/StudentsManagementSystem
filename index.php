@@ -1,4 +1,9 @@
+<?php
+include 'connexion.php';
+$sql = "SELECT Nom FROM filiere";
+$data = MySQLi_query($conn,$sql);
 
+ ?>
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
   <head>
@@ -22,7 +27,14 @@
           <label for="E-mail">Email :</label><br>
           <input type="email" name="Email" value=""><br><br>
           <label for="Filliere"> Filliere :</label><br>
-          <input type="text" name="Filliere" value=""><br><br>
+          <select class="" name="Filliere">
+            <?php while ($res=mysqli_fetch_Assoc($data)){
+             ?>
+            <option value="<?php echo $res['Nom'] ?>"> <?php echo $res['Nom'] ?></option>
+          <?php } ?>
+          </select>
+
+          <br><br>
           <label for="DateDeNaissance"> Date De Naissance :</label><br>
           <input type="date" name="Date" value=""><br><br>
           <label for="Password"> Password :</label><br>
