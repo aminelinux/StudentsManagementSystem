@@ -83,8 +83,15 @@ $data = MySQLi_query($conn,$sql);
               <a href="modif.php?id=<?php echo $row['id'] ?>"><button id="button1" type="button" name="Modifier">Modifier</button></a>
               <a href="confirmation.php?id=<?php echo $row['id']?>"><button id="button2" type="button" name="Supprimer">Supprimer</button></a>
             </td>
+            <form class="" action="confSup.php" method="post">
+              <td><input type="checkbox" name="supp[]" value="<?php echo $row['id']; ?>"></td>
+              <?php } ?>
+              <tr>
+                <td colspan="9"></td>
+                <td><input type="submit" name="submit" value="submit"></td>
+              </tr>
+            </form>
           </tr>
-        <?php } ?>
       </table>
     </div>
   </body>
