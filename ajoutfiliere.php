@@ -1,5 +1,5 @@
 <?php
-
+echo "string";
  ?>
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
@@ -9,7 +9,7 @@
   </head>
   <body>
     <div class="main_form">
-      <form align="center" class="ajout" action="index.html" method="POST">
+      <form align="center" action="ajout.php" method="POST">
         <fieldset>
           <legend align="center"> Ajouter Filliere</legend>
           <label for="Nom">Nom Filliere :</label><br>
@@ -20,7 +20,7 @@
           <input type="text" name="nb_groups" value=""><br><br>
 
           <input type="submit" name="submit" value="submit"><br>
-          
+
         </fieldset>
       </form>
 

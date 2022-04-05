@@ -1,6 +1,7 @@
 <?php
-include("connexion.php");
-$sql = "SELECT * FROM etudiant";
+include "connexion.php";
+$r = $_POST['rech'];
+$sql = "SELECT * FROM etudiant WHERE Nom like '%$r%' or Prenom like '%$r%' or Adresse like '%$r%' or Filiere like '%$r%' or Adresse like '%$r%'";
 $data = MySQLi_query($conn,$sql);
  ?>
 <!DOCTYPE html>
@@ -95,7 +96,7 @@ $data = MySQLi_query($conn,$sql);
       </table>
       <h1 align="center">Recherche Etudiant</h1>
       <form class="" action="rech.php" method="post">
-        <input type="text" name="rech" value=""><input type="submit" name="Rechercher" value="Rechercher">
+        <input type="text" name="rech" value="" required><input type="submit" name="Rechercher" value="Rechercher">
       </form>
     </div>
   </body>
