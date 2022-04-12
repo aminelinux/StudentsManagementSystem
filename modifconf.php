@@ -1,7 +1,6 @@
 <?php
 include 'connexion.php';
 
-
 $matr = $_POST['Matricule'];
 $nom = $_POST['Nom'];
 $prenom = $_POST['Prenom'];
