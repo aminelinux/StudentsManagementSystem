@@ -1,5 +1,11 @@
 <?php
+Session_Start();
 include("connexion.php");
+//$username = $_SESSION['username'];
+//$sql1 ="SELECT nom,prenom FROM etudiant WHERE email='$username'";
+
+//$session=MySQLi_query($conn,$sql1);
+//$data2 = mysqli_fetch_Assoc($session);
 $sql = "SELECT * FROM etudiant";
 $data = MySQLi_query($conn,$sql);
  ?>
@@ -51,6 +57,12 @@ $data = MySQLi_query($conn,$sql);
     </style>
   </head>
   <body id="background2">
+    <div align="right">
+      Bienvenue <?php echo $_SESSION['nom'];echo " ";echo $_SESSION['prenom']; ?>
+      <br><br>
+      <a href="deconnect.php"><button align="right" type="button" name="button">Deconnexion</button></a>
+    </div>
+
     <div id="div1">
       <h1>Liste des Etudiant</h1>
       <a href="index.php"><button id="button3" type="button" name="Ajouter Etudiant">Ajouter Etudiant</button></a>

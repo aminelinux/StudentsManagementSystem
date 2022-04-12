@@ -9,7 +9,6 @@ $data = MySQLi_query($conn,$sql);
   <head>
     <meta charset="utf-8">
     <title>ajouter Etudiant</title>
-
   </head>
   <body >
     <div class="main" align = "center">
