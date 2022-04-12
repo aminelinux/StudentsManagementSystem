@@ -12,6 +12,7 @@ if(MySQLi_num_rows($res)==1){
   $_SESSION['password'] = $password;
   $_SESSION['nom'] = $data['Nom'];
   $_SESSION['prenom'] = $data['Prenom'];
+  $_SESSION['id'] = $data['id'];
 header('Location:consult.php');
 
 }else {

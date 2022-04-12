@@ -1,9 +1,9 @@
 <?php
 Session_Start();
+if(isset($_SESSION['username'])){
 include("connexion.php");
 //$username = $_SESSION['username'];
 //$sql1 ="SELECT nom,prenom FROM etudiant WHERE email='$username'";
-
 //$session=MySQLi_query($conn,$sql1);
 //$data2 = mysqli_fetch_Assoc($session);
 $sql = "SELECT * FROM etudiant";
@@ -90,10 +90,22 @@ $data = MySQLi_query($conn,$sql);
             <td><?php echo $row['Filiere'] ?></td>
             <td><?php echo $row['Naissance'] ?></td>
             <td><?php echo $row['Email'] ?></td>
-            <td><?php echo $row['Password'] ?></td>
+
+            <td><?php
+
+            if($_SESSION['id']==$row['id'])
+            echo $row['Password'];
+            else
+             echo "*******";
+             ?></td>
             <td>
+              <?php if($_SESSION['id']==$row['id']){ ?>
               <a href="modif.php?id=<?php echo $row['id'] ?>"><button id="button1" type="button" name="Modifier">Modifier</button></a>
               <a href="confirmation.php?id=<?php echo $row['id']?>"><button id="button2" type="button" name="Supprimer">Supprimer</button></a>
+            <?php }else{ ?>
+              <a href="modif.php?id=<?php echo $row['id'] ?>"><button  id="button1" type="button" name="Modifier" disabled>Modifier</button></a>
+              <a href="confirmation.php?id=<?php echo $row['id']?>"><button id="button2" type="button" name="Supprimer" disabled>Supprimer</button></a>
+            <?php } ?>
             </td>
             <form class="" action="confSup.php" method="post">
               <td><input type="checkbox" name="supp[]" value="<?php echo $row['id']; ?>"></td>
@@ -112,3 +124,6 @@ $data = MySQLi_query($conn,$sql);
     </div>
   </body>
 </html>
+<?php }else {
+  Header("location:Auth.php");
+} ?>
