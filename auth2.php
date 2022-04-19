@@ -13,6 +13,7 @@ if(MySQLi_num_rows($res)==1){
   $_SESSION['nom'] = $data['Nom'];
   $_SESSION['prenom'] = $data['Prenom'];
   $_SESSION['id'] = $data['id'];
+  $_SESSION['Photo'] = $data['Photos'];
 header('Location:consult.php');
 
 }else {

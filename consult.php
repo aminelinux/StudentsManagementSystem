@@ -64,7 +64,7 @@ $data = MySQLi_query($conn,$sql);
   </head>
   <body id="background2">
     <div align="right">
-      <img src="images/avatar2.png" alt="Avatar" class="avatar">
+      <img src=<?php if(isset($_SESSION['Photo'])) {echo 'photos/'.$_SESSION['Photo'];} else {echo 'photos/avatar2.png';}?> alt="Avatar" class="avatar">
       Bienvenue <?php echo $_SESSION['nom'];echo " ";echo $_SESSION['prenom']; ?>
       <br><br>
       <a href="deconnect.php"><button align="right" type="button" name="button">Deconnexion</button></a>

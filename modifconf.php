@@ -1,6 +1,6 @@
 <?php
+Session_Start();
 include 'connexion.php';
-
 $matr = $_POST['Matricule'];
 $nom = $_POST['Nom'];
 $prenom = $_POST['Prenom'];
@@ -12,22 +12,25 @@ $password = $_POST['Password'];
 $id=$_POST['id'];
 if(isset($_FILES['photos']))
 {
-  $name = $_FILES['upload']['name'];
+  $name = $_FILES['photos']['name'];
+  $tmpfile = $_FILES['photos']['tmp_name'];
   $dest_File = "photos/".$name;
   $extension = strrchr($name,".");
   $extension_autorisees = array('.jpg', '.png','.tif');
- if(in_array($extension,$extension_autorisees))
+ if(in_array($extension,$extension_autorisees)){
  move_uploaded_file($tmpfile,$dest_File);
+ $_SESSION['Photo'] = $name;
+}
  else
  echo "extension non autorise";
+ 
 } else {
-  $sql="SELECT Photo FROM etudiant WHERE id='$id'";
+  $sql="SELECT Photos FROM etudiant WHERE id='$id'";
   $res = MySQLi_query($conn,$sql);
   $data = mysqli_fetch_Assoc($res);
-  $name=$data('Photo');
-
+  $name=$data['Photos'];
 }
-$sql = "UPDATE etudiant SET Matricule ='$matr',Nom ='$nom',Prenom ='$prenom',Adresse ='$adresse',Email ='$email',Filiere='$filliere',Naissance='$date',Password='$password' WHERE id='$id'";
+$sql = "UPDATE etudiant SET Matricule ='$matr',Nom ='$nom',Prenom ='$prenom',Adresse ='$adresse',Email ='$email',Filiere='$filliere',Naissance='$date',Password='$password',Photos='$name' WHERE id='$id'";
 if(MySQLi_query($conn,$sql))
   header("location:consult.php");
 else
