@@ -17,7 +17,7 @@ $row = mysqli_fetch_Assoc($res);
     <title>Modification</title>
   </head>
   <body>
-    <form class="" action="modifconf.php" method="post">
+    <form class="" action="modifconf.php" method="post" enctype="multipart/form-data">
       <fieldset >
         <legend>Formulaire de Modification</legend>
           <label for="Matricule"> Matricule :</label><br>
@@ -44,8 +44,10 @@ $row = mysqli_fetch_Assoc($res);
           <input type="date" name="Date" value="<?php echo $row['Naissance'] ?>"><br><br>
           <label for="Password"> Password :</label><br>
           <input type="password" name="Password" value="<?php echo $row['Password'] ?>"><br><br>
+          <label for="photo">photos</label>
+          <input type="file" name="photos">
           <input type="hidden" name="id" value="<?php echo "$row[id]"; ?>">
-          <input type="submit" name="submit" value="mdifier">
+          <input type="submit" name="submit" value="modifier">
       </fieldset>
     </form>
   </body>

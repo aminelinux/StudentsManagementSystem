@@ -12,7 +12,7 @@ $data = MySQLi_query($conn,$sql);
   </head>
   <body >
     <div class="main" align = "center">
-      <form align="center" class="main_form" action="register.php" method="POST">
+      <form align="center" class="main_form" action="register.php" method="POST" enctype="multipart/form-data">
       <fieldset >
         <legend>Formulaire</legend>
           <label for="Matricule"> Matricule :</label><br>
@@ -38,6 +38,8 @@ $data = MySQLi_query($conn,$sql);
           <input type="date" name="Date" value=""><br><br>
           <label for="Password"> Password :</label><br>
           <input type="password" name="Password" value=""><br><br>
+          <label for="Photos"> Password :</label><br>
+          <input type="file" name="upload">
           <input type="submit" name="submit" value="Ajouter">
       </fieldset>
       </form>

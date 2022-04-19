@@ -77,6 +77,7 @@ $data = MySQLi_query($conn,$sql);
       <br><br>
       <table>
         <tr>
+          <th>photos</th>
           <th>Matricule</th>
           <th>Nom</th>
           <th>Prenom</th>
@@ -89,7 +90,11 @@ $data = MySQLi_query($conn,$sql);
           <th>SuppMultiple</th>
         </tr>
         <?php while ($row=mysqli_fetch_Assoc($data)) { ?>
-          <tr>
+          <tr><?php if($row['Photos']!=null){ ?>
+            <td><img src="<?php echo 'photos/'.$row['Photos']?>" alt="avatar" width="50" height="50" ></td>
+            <?php }else{ ?>
+              <td><img src="<?php echo 'photos/avatar2.png'?>" alt="avatar" width="50" height="50" ></td>
+            <?php } ?>
             <td><?php echo $row['Matricule'] ?></td>
             <td><?php echo $row['Nom'] ?></td>
             <td><?php echo $row['Prenom'] ?></td>
@@ -121,7 +126,7 @@ $data = MySQLi_query($conn,$sql);
               <td><input type="checkbox" name="supp[]" value="<?php echo $row['id']; ?>" disabled></td>
             <?php }} ?>
               <tr>
-                <td colspan="9"></td>
+                <td colspan="10"></td>
 
                 <td><input type="submit" name="submit" value="Supprimer"> </td>
               </tr>
