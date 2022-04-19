@@ -54,10 +54,17 @@ $data = MySQLi_query($conn,$sql);
         background-color: brown;
         color: white;
       }
+      .avatar {
+  vertical-align: middle;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+}
     </style>
   </head>
   <body id="background2">
     <div align="right">
+      <img src="images/avatar2.png" alt="Avatar" class="avatar">
       Bienvenue <?php echo $_SESSION['nom'];echo " ";echo $_SESSION['prenom']; ?>
       <br><br>
       <a href="deconnect.php"><button align="right" type="button" name="button">Deconnexion</button></a>
@@ -108,10 +115,14 @@ $data = MySQLi_query($conn,$sql);
             <?php } ?>
             </td>
             <form class="" action="confSup.php" method="post">
+                <?php if($_SESSION['id']==$row['id']){ ?>
               <td><input type="checkbox" name="supp[]" value="<?php echo $row['id']; ?>"></td>
-              <?php } ?>
+            <?php } else {?>
+              <td><input type="checkbox" name="supp[]" value="<?php echo $row['id']; ?>" disabled></td>
+            <?php }} ?>
               <tr>
                 <td colspan="9"></td>
+
                 <td><input type="submit" name="submit" value="Supprimer"> </td>
               </tr>
             </form>
